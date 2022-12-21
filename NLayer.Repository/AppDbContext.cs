@@ -3,6 +3,7 @@ using NLayer.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,12 +23,14 @@ namespace NLayer.Repository
 
         public DbSet<ProductFeature> ProductFeatures { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelbuilder.Entity<Category>().HasKey(x => x.Id);  --> fluent api.
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
          
-            base.OnModelCreating(modelbuilder);
-        }
+            base.OnModelCreating(modelBuilder);
+        } 
     }
 
    

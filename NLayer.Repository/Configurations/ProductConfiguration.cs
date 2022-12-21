@@ -18,6 +18,8 @@ namespace NLayer.Repository.Configurations
             builder.Property(x => x.Name).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Stock).IsRequired();
 
+            builder.ToTable("Products");
+
             builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(18,2)"); // virgülden önce 16 sonra 2 karakter.
             builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId);
             // Eğer tablolarda bağlantı yapmazsak yukarıdaki gibi scoped bir bağlantı yapabiliriz. FK belirterek.
