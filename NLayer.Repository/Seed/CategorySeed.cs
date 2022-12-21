@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NLayer.Core;
+using NLayer.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,12 @@ namespace NLayer.Repository.Seed
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasData()
+            //Category c = new();
+            //c.Name = "x" --> ürün kayıt şekli 1.
+            builder.HasData(
+                new Category { Id = 1, Name = "Kalemler" },
+                new Category { Id = 2, Name = "Kitaplar" },
+                new Category { Id = 3, Name = "Kalemler" });
         }
     }
 }
