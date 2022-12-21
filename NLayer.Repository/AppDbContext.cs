@@ -21,5 +21,14 @@ namespace NLayer.Repository
         public DbSet<Product> Products { get; set; }
 
         public DbSet<ProductFeature> ProductFeatures { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            //modelbuilder.Entity<Category>().HasKey(x => x.Id);  --> fluent api.
+         
+            base.OnModelCreating(modelbuilder);
+        }
     }
+
+   
 }
